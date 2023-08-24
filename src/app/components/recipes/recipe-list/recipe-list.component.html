@@ -1,2 +1,16 @@
-<p>recipe-list works!</p>
-<recipe-item/>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success">New Recipe</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <recipe-item *ngFor="let recipe of recipes" [recipe]="recipe"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <recipe-detail *ngFor="let recipe of recipes" [recipe]="recipe"/>
+  </div>
+</div>
