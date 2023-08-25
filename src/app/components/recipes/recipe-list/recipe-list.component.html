@@ -6,11 +6,6 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (click)="showDetailsOf(recipe)"/>
-  </div>
-</div>
-<div class="row" *ngIf="activeRecipe">
-  <div class="col-xs-12">
-    <recipe-detail [recipe]="activeRecipe"/>
+    <recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (activeRecipe)="switchDetails(recipe)"/>
   </div>
 </div>

@@ -13,8 +13,7 @@ export class ShoppingListComponent {
     new Ingredient('cucumber', 1)
   ]
 
-  printToConsole() {
-    console.log(this.ingredients[0])
-    console.log(this.ingredients[1])
+  addIngredient(ingredient: Ingredient){
+    this.ingredients.push(ingredient)
   }
 }

@@ -1,6 +1,10 @@
 <div class="row">
   <h3>Recipes</h3>
   <div class="col-md-5">
-    <recipe-list/>
+    <recipe-list (activeRecipe)="setRecipeDetails($event)"/>
+  </div>
+  <hr>
+  <div class="col-xs-12" *ngIf="selectedRecipe">
+    <recipe-detail [recipe]="selectedRecipe"/>
   </div>
 </div>

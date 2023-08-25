@@ -9,6 +9,8 @@ import {HeaderComponent} from './components/header/header.component';
 import {ShoppingListComponent} from './components/shopping-list/shopping-list.component';
 import {ShoppingListEditComponent} from './components/shopping-list/edit/shopping-list-edit.component';
 import {RecipesComponent} from "./components/recipes/recipes.component";
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {RecipesComponent} from "./components/recipes/recipes.component";
     ShoppingListEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
