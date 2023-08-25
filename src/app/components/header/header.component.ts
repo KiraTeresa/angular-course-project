@@ -6,13 +6,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() goTo = new EventEmitter<string>
+  @Output() goTo = new EventEmitter<string>()
 
-  goToRecipes() {
-    this.goTo.emit('recipes')
-  }
-
-  goToShoppingList() {
-    this.goTo.emit('shopping-list')
+  goToPage(page: string) {
+    this.goTo.emit(page)
   }
 }
