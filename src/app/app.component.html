@@ -1,11 +1,9 @@
-<app-header/>
+<app-header (goTo)="setCurrentPage($event)"/>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h3>Recipes</h3>
-      <app-recipes/>
-      <h3>Shopping List</h3>
-      <shopping-list/>
+      <app-recipes *ngIf="activePage === 'recipes'"/>
+      <shopping-list *ngIf="activePage === 'shopping-list'"/>
     </div>
   </div>
 </div>

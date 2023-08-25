@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  @Output() goTo = new EventEmitter<string>
 
+  goToRecipes() {
+    this.goTo.emit('recipes')
+  }
+
+  goToShoppingList() {
+    this.goTo.emit('shopping-list')
+  }
 }
