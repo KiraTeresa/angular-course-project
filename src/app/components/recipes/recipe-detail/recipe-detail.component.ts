@@ -14,8 +14,12 @@ export class RecipeDetailComponent {
   constructor(private shoppingListService: ShoppingListService) {
   }
   addToShoppingList(){
-    for (let ingredient of this.recipe.ingredients){
-      this.shoppingListService.addIngredient(ingredient)
-    }
+    // for (let ingredient of this.recipe.ingredients){
+    //   this.shoppingListService.addIngredient(ingredient)
+    // }
+
+    // better go with the following approach, to only emit the event once and not
+    // for every ingredient, like it happens when doing the for-loop
+    this.shoppingListService.addIngredients(this.recipe.ingredients)
   }
 }
