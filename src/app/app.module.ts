@@ -12,6 +12,7 @@ import {RecipesComponent} from "./components/recipes/recipes.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { DropdownDirective } from './directives/dropdown.directive';
+import {ShoppingListService} from "./services/shopping-list.service";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

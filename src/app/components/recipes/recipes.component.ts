@@ -20,8 +20,4 @@ export class RecipesComponent implements OnInit{
       this.selectedRecipe = recipe
     })
   }
-
-  setRecipeDetails(recipe: Recipe) {
-    this.selectedRecipe = recipe;
-  }
 }
