@@ -1,5 +1,6 @@
 import {Recipe} from "../models/recipe.model";
 import {EventEmitter} from "@angular/core";
+import {Ingredient} from "../models/ingredient.model";
 
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>()
@@ -8,12 +9,20 @@ export class RecipeService {
     new Recipe(
       'Spring Roll',
       'Delicious and light',
-      'https://www.connoisseurusveg.com/wp-content/uploads/2021/07/vegan-summer-rolls-sq-1-of-1.jpg'
+      'https://www.connoisseurusveg.com/wp-content/uploads/2021/07/vegan-summer-rolls-sq-1-of-1.jpg',
+      [
+        new Ingredient('carrot', 2),
+        new Ingredient('mushrooms', 6)
+      ]
     ),
     new Recipe(
       'Wrap',
       'Super yummie',
-      'https://pinchofyum.com/wp-content/uploads/Vegan-Crunchwrap-Feature.jpg'
+      'https://pinchofyum.com/wp-content/uploads/Vegan-Crunchwrap-Feature.jpg',
+      [
+        new Ingredient('tomato', 3),
+        new Ingredient('lettuce', 1)
+      ]
     )
   ]
 
