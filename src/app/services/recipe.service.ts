@@ -7,6 +7,7 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
+      '1',
       'Spring Roll',
       'Delicious and light',
       'https://www.connoisseurusveg.com/wp-content/uploads/2021/07/vegan-summer-rolls-sq-1-of-1.jpg',
@@ -16,6 +17,7 @@ export class RecipeService {
       ]
     ),
     new Recipe(
+      '2',
       'Wrap',
       'Super yummie',
       'https://pinchofyum.com/wp-content/uploads/Vegan-Crunchwrap-Feature.jpg',
@@ -28,5 +30,9 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipeById(id: string): Recipe {
+    return this.recipes.find(recipe => recipe.id === id)
   }
 }

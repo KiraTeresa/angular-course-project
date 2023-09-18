@@ -4,10 +4,7 @@
     <recipe-list/>
   </div>
   <hr>
-  <div class="col-xs-12" *ngIf="selectedRecipe; else showInfo">
-    <recipe-detail [recipe]="selectedRecipe"/>
+  <div class="col-md-7">
+    <router-outlet></router-outlet>
   </div>
-  <ng-template #showInfo>
-    <p>-- please select a recipe --</p>
-  </ng-template>
 </div>

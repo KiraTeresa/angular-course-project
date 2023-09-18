@@ -7,9 +7,4 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
-  activePage: string = 'recipes'
-
-  setCurrentPage(newPage: string) {
-    this.activePage = newPage
-  }
 }

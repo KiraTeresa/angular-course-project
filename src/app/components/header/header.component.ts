@@ -6,9 +6,4 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() goTo = new EventEmitter<string>()
-
-  goToPage(page: string) {
-    this.goTo.emit(page)
-  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-recipe-edit',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent {
-
+  public currentRecipeId: string
+constructor(private route: ActivatedRoute) {
+  this.route.params.subscribe((params: Params) => this.currentRecipeId = params.id)
+}
 }
