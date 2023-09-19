@@ -1,9 +1,9 @@
 import {Recipe} from "../models/recipe.model";
-import {EventEmitter} from "@angular/core";
 import {Ingredient} from "../models/ingredient.model";
+import {Subject} from "rxjs";
 
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>()
+  recipeSelected = new Subject<Recipe>()
 
   private recipes: Recipe[] = [
     new Recipe(
