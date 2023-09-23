@@ -38,6 +38,11 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
 
+  onClear() {
+    this.form.reset()
+    this.editMode = false
+  }
+
   onSubmit() {
     const ingName: string = this.form.controls.name.value;
     const ingAmount: number = this.form.controls.amount.value;
@@ -50,5 +55,6 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     }
 
     this.form.reset()
+    this.editMode = false
   }
 }
