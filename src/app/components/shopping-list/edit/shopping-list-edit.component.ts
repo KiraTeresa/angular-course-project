@@ -1,6 +1,7 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Ingredient} from "../../../models/ingredient.model";
 import {ShoppingListService} from "../../../services/shopping-list.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'shopping-list-edit',
@@ -9,15 +10,14 @@ import {ShoppingListService} from "../../../services/shopping-list.service";
 })
 
 export class ShoppingListEditComponent {
-  @ViewChild('ingredientName', {static: true}) newIngredientName: ElementRef;
-  @ViewChild('ingredientAmount', {static: true}) newIngredientAmount: ElementRef;
+  @ViewChild('shoppingListForm', {static: true}) form: NgForm;
 
   constructor(private shoppingListService: ShoppingListService) {
   }
 
   onSubmit() {
-    const ingName = this.newIngredientName.nativeElement.value
-    const ingAmount = this.newIngredientAmount.nativeElement.value
+    const ingName: string = this.form.controls.name.value;
+    const ingAmount: number = this.form.controls.amount.value;
     const newIng = new Ingredient(ingName, ingAmount)
     this.shoppingListService.addIngredient(newIng)
   }
