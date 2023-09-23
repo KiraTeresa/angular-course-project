@@ -67,6 +67,10 @@ export class RecipeEditComponent implements OnInit {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
   }
 
+  onDeleteAllIngredients(){
+    (<FormArray>this.recipeForm.get('ingredients')).clear()
+  }
+
   onSubmit() {
     if (this.editMode){
       this.recipeService.updateRecipe(this.currentRecipeIndex, this.recipeForm.value)
