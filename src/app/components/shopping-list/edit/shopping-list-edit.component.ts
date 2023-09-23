@@ -43,6 +43,11 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     this.editMode = false
   }
 
+  onDelete() {
+    this.shoppingListService.deleteIngredient(this.editedItemIndex)
+    this.onClear()
+  }
+
   onSubmit() {
     const ingName: string = this.form.controls.name.value;
     const ingAmount: number = this.form.controls.amount.value;
@@ -54,7 +59,6 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
       this.shoppingListService.addIngredient(newIng)
     }
 
-    this.form.reset()
-    this.editMode = false
+    this.onClear()
   }
 }
