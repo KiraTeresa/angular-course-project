@@ -3,11 +3,10 @@ import {Ingredient} from "../models/ingredient.model";
 import {Subject} from "rxjs";
 
 export class RecipeService {
-  recipeSelected = new Subject<Recipe>()
+  recipesChanged = new Subject<Recipe[]>()
 
   private recipes: Recipe[] = [
     new Recipe(
-      '1',
       'Spring Roll',
       'Delicious and light',
       'https://www.connoisseurusveg.com/wp-content/uploads/2021/07/vegan-summer-rolls-sq-1-of-1.jpg',
@@ -17,7 +16,6 @@ export class RecipeService {
       ]
     ),
     new Recipe(
-      '2',
       'Wrap',
       'Super yummie',
       'https://pinchofyum.com/wp-content/uploads/Vegan-Crunchwrap-Feature.jpg',
@@ -32,7 +30,17 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  getRecipeById(id: string): Recipe {
-    return this.recipes.find(recipe => recipe.id === id)
+  getRecipeByIndex(index: number): Recipe {
+    return this.recipes[index]
+  }
+
+  updateRecipe(index: number, recipe: Recipe) {
+    this.recipes[index] = recipe
+    this.recipesChanged.next(this.recipes.slice())
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe)
+    this.recipesChanged.next(this.recipes.slice())
   }
 }
