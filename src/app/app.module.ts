@@ -19,6 +19,7 @@ import {RecipeStartComponent} from './components/recipes/recipe-start/recipe-sta
 import {RecipeService} from "./services/recipe.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthComponent} from "./components/auth/auth.component";
+import {LoadingSpinnerComponent} from "./components/loading-spinner/loading-spinner.component";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {AuthComponent} from "./components/auth/auth.component";
     DropdownDirective,
     RecipeEditComponent,
     RecipeStartComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
