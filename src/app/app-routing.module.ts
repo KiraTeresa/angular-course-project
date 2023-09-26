@@ -7,6 +7,7 @@ import {ShoppingListComponent} from "./components/shopping-list/shopping-list.co
 import {ShoppingListEditComponent} from "./components/shopping-list/edit/shopping-list-edit.component";
 import {RecipeStartComponent} from "./components/recipes/recipe-start/recipe-start.component";
 import {RecipesResolverService} from "./services/recipes-resolver.service";
+import {AuthComponent} from "./components/auth/auth.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'recipes', pathMatch: 'full'},
@@ -22,8 +23,12 @@ const appRoutes: Routes = [
     path: 'shopping-list', component: ShoppingListComponent, children: [
       {path: 'edit', component: ShoppingListEditComponent}
     ]
+  },
+  {
+    path: 'auth', component: AuthComponent
   }
 ]
+
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
