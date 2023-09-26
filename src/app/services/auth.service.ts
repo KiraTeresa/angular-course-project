@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../environment/environment";
-import {catchError, Subject, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {User} from "../models/user.model";
 
 export interface AuthResponseData {
@@ -16,7 +16,7 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  user = new Subject<User>()
+  user = new BehaviorSubject<User>(null)
 
   constructor(private http: HttpClient) {
   }
@@ -27,9 +27,12 @@ export class AuthService {
         email,
         password,
         returnSecureToken: true
-      }).pipe(catchError(this.handleError), tap(resData => {
-      this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
-    }))
+      }).pipe(
+      catchError(this.handleError),
+      tap(resData => {
+        this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
+      })
+    )
   }
 
   login(email: string, password: string) {
@@ -37,9 +40,12 @@ export class AuthService {
       email,
       password,
       returnSecureToken: true
-    }).pipe(catchError(this.handleError), tap(resData => {
-      this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
-    }))
+    }).pipe(
+      catchError(this.handleError),
+      tap(resData => {
+        this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
+      })
+    )
   }
 
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
@@ -54,8 +60,6 @@ export class AuthService {
 
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occured!'
-    console.log('---------')
-    console.log(errorRes)
 
     if (!errorRes.error || !errorRes.error.error) {
       return throwError(() => new Error(errorMessage))
