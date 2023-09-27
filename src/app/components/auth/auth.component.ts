@@ -20,7 +20,12 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   private closeSub: Subscription
 
-  constructor(private authService: AuthService, private router: Router, private componentFactoryResolver: ComponentFactoryResolver) {
+  // former syntax
+  // constructor(private authService: AuthService, private router: Router, private componentFactoryResolver: ComponentFactoryResolver) {
+  // }
+
+  // new syntax
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -71,22 +76,28 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   private showErrorAlert(errorMessage: string) {
+    /* former syntax
     const alertCompFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent)
 
     const hostViewContainerRef = this.alertHost.viewContainerRef
     hostViewContainerRef.clear()
 
-    const componentRef = hostViewContainerRef.createComponent(alertCompFactory)
+    const componentRef = hostViewContainerRef.createComponent(alertCompFactory)*/
+
+    // new syntax
+    const hostViewContainerRef = this.alertHost.viewContainerRef
+    hostViewContainerRef.clear()
+    const componentRef = hostViewContainerRef.createComponent<AlertComponent>(AlertComponent)
 
     componentRef.instance.message = errorMessage
     this.closeSub = componentRef.instance.close.subscribe(() => {
       this.closeSub.unsubscribe()
       hostViewContainerRef.clear()
-    } )
+    })
   }
 
   ngOnDestroy() {
-    if (this.closeSub){
+    if (this.closeSub) {
       this.closeSub.unsubscribe()
     }
   }
