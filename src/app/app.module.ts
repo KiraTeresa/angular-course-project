@@ -7,6 +7,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./modules/shared.module";
 import {CoreModule} from "./modules/core.module";
+import {LoggingService} from "./services/logging.service";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {CoreModule} from "./modules/core.module";
     SharedModule,
     CoreModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // providers: [LoggingService]
 })
 export class AppModule {
 }
